@@ -107,9 +107,15 @@ overlaySection.addEventListener("click", (e) => {
   console.log(e.target);
   if (e.target.tagName === "IMG") {
     const id = +e.target.dataset.id + 1;
-    overlayImage.src = searchImage(id % imgLen).src;
+    overlayImage.style.width = "0%";
+    setTimeout(() => {
+      overlayImage.src = searchImage(id % imgLen).src;
+    }, 600);
+    // overlayImage.src = searchImage(id % imgLen).src;
     overlayImage.dataset.id = id % imgLen;
-
-    overlayImage.style.width = "100%";
+    setTimeout(function () {
+      overlayImage.style.width = "100%";
+    }, 600);
+    // overlayImage.style.width = "100%";
   } else overlaySection.classList.toggle("show");
 });
